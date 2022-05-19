@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./themify-icons/themify-icons.css">
+    <title>Modal</title>
+</head>
+<body>
+        <div class="app">
+            <div class="container">
+                <button class="btn">Open Modal</button>
+                <div class="modal_container">
+                    <div class="modal">
+                        <div class="modal_header">
+                            <h3 class="header_heading">Welcome to CJmax</h3>
+                            <i class="header_close ti-close"></i>
+                        </div>
+                        <div class="modal_content">
+                            <h3 class="content_body">Modal</h3>
+                            <p class="content_description">Đây là phần body của Modal</p>
+                        </div>
+                        <div class="modal_footer">
+                            <span class="footer_close">Close</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let btnElement = document.querySelector('.btn')
+            let modalElement = document.querySelector('.modal_container')
+            let modalChild = modalElement.querySelector('.modal')
+            let closeIconElement = document.querySelector('.header_close')
+            let closeElement = document.querySelector('.footer_close')
+            btnElement.onclick = function(){
+                modalElement.classList.add('modal_container--active')
+                modalChild.classList.add('modal--active')
+            }
+            closeIconElement.addEventListener('click', closeModal)
+            closeElement.addEventListener('click', closeModal)
+            modalElement.addEventListener('click', function(e){
+                if(e.target === e.currentTarget){
+                        closeModal()
+                    }
+            })
+            function closeModal(){
+                modalElement.classList.remove('modal_container--active')
+                modalChild.classList.remove('modal--active')
+            }
+        </script>
+</body>
+</html>
